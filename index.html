@@ -100,6 +100,7 @@
             animation: fadeDown 0.8s ease-out forwards;
         }
 
+        /* Área da Logo no Header */
         .logo {
             font-size: 1.4rem;
             font-weight: 800;
@@ -110,11 +111,36 @@
             gap: 8px;
         }
 
-        .logo i { color: var(--color-pink-light); font-size: 1.6rem; }
-        .logo span {
+        .logo-img {
+            height: 32px;
+            width: auto;
+            /* Efeito de brilho na imagem transparente da logo */
+            filter: drop-shadow(0 0 10px rgba(255, 123, 254, 0.6));
+            animation: logoPulse 3s infinite alternate;
+        }
+
+        .logo .separator {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 300;
+            margin: 0 4px;
+        }
+
+        .logo span:not(.separator) {
             background: linear-gradient(135deg, var(--color-pink-light), var(--color-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Animação do Brilho da Logo */
+        @keyframes logoPulse {
+            0% { 
+                filter: drop-shadow(0 0 8px rgba(255, 123, 254, 0.4)); 
+                transform: scale(1); 
+            }
+            100% { 
+                filter: drop-shadow(0 0 18px rgba(138, 43, 226, 0.9)); 
+                transform: scale(1.05); 
+            }
         }
 
         /* Botões */
@@ -539,7 +565,9 @@
         }
         @media (max-width: 480px) {
             header { padding: 12px 20px; width: calc(100% - 24px); }
-            .logo span { display: none; }
+            /* No celular, esconde apenas a barrinha separadora e o texto "Visual", deixando a logo respirar */
+            .logo .separator, .logo span:not(.separator) { display: none; }
+            
             .hero h1 { font-size: 2.5rem; letter-spacing: -1px; }
             .hero p { font-size: 1.05rem; }
             .btn-primary { padding: 16px 20px; width: 100%; font-size: 1rem; }
@@ -563,9 +591,11 @@
         <div class="bg-grid"></div>
     </div>
 
+    <!-- Header Glassmorphism Atualizado -->
     <header class="glass">
         <div class="logo">
-            <i class='bx bxs-color'></i> KL <span>Visual</span>
+            <img src="https://i.ibb.co/sp50YMk2/icon-clean.png" alt="KL Visual Logo" class="logo-img">
+            <span class="separator">|</span> <span>Visual</span>
         </div>
         <a href="#contato" class="btn btn-small">
             <i class='bx bx-message-rounded-dots'></i> Entrar em contato
