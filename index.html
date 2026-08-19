@@ -30,9 +30,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--color-bg);
@@ -212,16 +210,12 @@
         }
 
         /* Serviços */
-        .services {
-            padding: 60px 0;
-            position: relative;
-            z-index: 10;
-        }
+        .services { padding: 60px 0; position: relative; z-index: 10; }
         
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
             font-weight: 800;
             letter-spacing: -1px;
         }
@@ -229,20 +223,20 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 24px;
         }
 
         .service-card {
             padding: 40px 30px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 123, 254, 0.3);
+            transform: translateY(-8px);
+            border-color: rgba(255, 123, 254, 0.4);
         }
 
         .icon-wrapper {
@@ -259,7 +253,7 @@
         .icon-wrapper i { font-size: 1.8rem; color: #fff; }
 
         .service-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 12px;
             color: #fff;
             font-weight: 700;
@@ -268,133 +262,30 @@
 
         .service-card p {
             color: #9090a0;
-            font-size: 1rem;
-            font-weight: 300;
-        }
-
-        /* Depoimentos */
-        .testimonials {
-            padding: 60px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .testimonial-card {
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .stars i {
-            color: #f5b041;
-            font-size: 1.2rem;
-        }
-
-        .testimonial-card p {
-            color: #e0e0e0;
             font-size: 1.05rem;
-            font-style: italic;
             font-weight: 300;
-            flex-grow: 1;
-        }
-
-        .client-info h4 {
-            color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 2px;
-        }
-
-        .client-info span {
-            color: var(--color-pink-light);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* FAQ (Perguntas Frequentes) */
-        .faq {
-            padding: 60px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .faq-item {
-            padding: 22px 30px;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item summary {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #fff;
-            cursor: pointer;
-            list-style: none; /* Remove seta padrão */
-        }
-
-        /* Esconde a seta nativa no Safari/Chrome */
-        .faq-item summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .faq-item summary i {
-            font-size: 1.5rem;
-            color: var(--color-pink-light);
-            transition: transform 0.3s ease;
-        }
-
-        /* Gira a seta quando o FAQ estiver aberto */
-        .faq-item[open] summary i {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding-top: 15px;
-            margin-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #9090a0;
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.7;
         }
 
         /* Portfólio */
-        .portfolio-soon {
-            padding: 60px 0 100px;
-        }
+        .portfolio-soon { padding: 60px 0 100px; }
 
         .soon-box {
             text-align: center;
-            padding: 60px 30px;
+            padding: 80px 30px;
             max-width: 800px;
             margin: 0 auto;
+            border: 1px dashed rgba(255, 123, 254, 0.3);
         }
 
         .soon-box i.main-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--color-pink-light);
             margin-bottom: 15px;
             display: inline-block;
         }
 
         .soon-box h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 15px;
             letter-spacing: -1px;
             font-weight: 800;
@@ -402,16 +293,171 @@
 
         .soon-box p {
             color: #a0a0b0;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
             font-weight: 300;
         }
 
+        /* Depoimentos Refinados */
+        .testimonials { padding: 80px 0; position: relative; z-index: 10; }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            padding: 45px 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 43, 226, 0.4);
+        }
+
+        /* Ícone de aspas no fundo do card */
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .stars { z-index: 1; }
+        .stars i { color: #FFD700; font-size: 1.3rem; }
+
+        .testimonial-card p {
+            color: #dcdcdc;
+            font-size: 1.1rem;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.7;
+            flex-grow: 1;
+            z-index: 1;
+        }
+
+        .client-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 20px;
+        }
+
+        .avatar {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--color-purple), var(--color-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .client-info h4 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 2px;
+            letter-spacing: -0.5px;
+        }
+
+        .client-info span {
+            color: var(--color-pink-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FAQ Estilizado Premium */
+        .faq { padding: 80px 0; position: relative; z-index: 10; }
+
+        .faq-container {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-item {
+            padding: 25px 35px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 123, 254, 0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .faq-item summary {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .faq-item summary::-webkit-details-marker { display: none; }
+
+        .faq-icon-left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            color: var(--color-pink-light);
+            font-size: 1.4rem;
+        }
+
+        .faq-title { flex-grow: 1; }
+
+        .faq-chevron {
+            font-size: 1.8rem;
+            color: #666;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
+        }
+
+        .faq-item[open] .faq-chevron {
+            transform: rotate(180deg);
+            color: var(--color-pink-light);
+        }
+
+        .faq-answer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #a0a0b0;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            /* Animação suave ao abrir */
+            animation: fadeInDown 0.4s ease-out;
+        }
+
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px 0;
+            padding: 40px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: #666;
             font-size: 0.95rem;
@@ -428,17 +474,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px; height: 45px;
+            width: 50px; height: 50px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
             color: #fff;
             text-decoration: none;
-            font-size: 1.4rem;
-            transition: background 0.2s ease;
+            font-size: 1.5rem;
+            transition: background 0.3s ease, transform 0.3s;
         }
 
         .footer-social a:hover {
             background: var(--color-purple);
+            transform: translateY(-3px);
         }
 
         /* Keyframes Leves */
@@ -450,11 +497,16 @@
             from { opacity: 0; transform: translateY(-20px) translateX(-50%); }
             to { opacity: 1; transform: translateY(0) translateX(-50%); }
         }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* Responsividade */
         @media (max-width: 900px) {
             .hero h1 { font-size: 3.2rem; }
             .hero { padding: 140px 0 60px; }
+            .section-title { font-size: 2.4rem; }
         }
         @media (max-width: 480px) {
             header { padding: 12px 20px; width: calc(100% - 24px); }
@@ -462,10 +514,16 @@
             .hero h1 { font-size: 2.5rem; letter-spacing: -1px; }
             .hero p { font-size: 1.05rem; }
             .btn-primary { padding: 16px 20px; width: 100%; font-size: 1rem; }
-            .service-card, .testimonial-card, .faq-item { padding: 25px 20px; }
-            .services-grid, .testimonials-grid { gap: 16px; }
+            
+            .service-card { padding: 30px 24px; }
+            .testimonial-card { padding: 35px 25px; }
+            .faq-item { padding: 20px 20px; }
+            .faq-item summary { font-size: 1.05rem; gap: 10px; }
+            .faq-icon-left { width: 35px; height: 35px; font-size: 1.2rem; }
+            
+            .services-grid, .testimonials-grid { gap: 20px; }
             .soon-box h2 { font-size: 2rem; }
-            .section-title { font-size: 2rem; margin-bottom: 35px;}
+            .section-title { font-size: 2rem; margin-bottom: 40px;}
         }
     </style>
 </head>
@@ -552,77 +610,105 @@
             </div>
         </section>
 
-        <!-- Seção de Depoimentos -->
+        <!-- Seção de Depoimentos Refinada -->
         <section class="testimonials">
             <h2 class="section-title">O que dizem sobre mim</h2>
             <div class="testimonials-grid">
                 
                 <div class="testimonial-card glass">
+                    <i class='bx bxs-quote-alt-left quote-icon'></i>
                     <div class="stars">
                         <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
                     </div>
-                    <p>"O trabalho ficou excepcional! A identidade visual do nosso torneio elevou muito o nível da competição. Super recomendo pela atenção aos detalhes e estética."</p>
-                    <div class="client-info">
-                        <h4>João Gabriel</h4>
-                        <span>Organizador de Eventos</span>
+                    <p>"O trabalho ficou excepcional! A identidade visual do nosso torneio elevou muito o nível da competição. Super recomendo pela atenção aos detalhes e estética impecável."</p>
+                    <div class="client-profile">
+                        <div class="avatar">J</div>
+                        <div class="client-info">
+                            <h4>João Gabriel</h4>
+                            <span>Organizador de Torneios</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card glass">
+                    <i class='bx bxs-quote-alt-left quote-icon'></i>
                     <div class="stars">
                         <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
                     </div>
-                    <p>"A edição dos vídeos e as artes para as redes sociais do estúdio mudaram completamente o nosso engajamento. Entrega rápida e um visual super premium."</p>
-                    <div class="client-info">
-                        <h4>Marcos Vinícius</h4>
-                        <span>Produtor Musical</span>
+                    <p>"A edição dos vídeos e as artes para as redes sociais mudaram completamente o nosso engajamento. Entrega rápida e um visual super premium. Recomendo de olhos fechados."</p>
+                    <div class="client-profile">
+                        <div class="avatar" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">M</div>
+                        <div class="client-info">
+                            <h4>Marcos Vinícius</h4>
+                            <span>Produtor Audiovisual</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card glass">
+                    <i class='bx bxs-quote-alt-left quote-icon'></i>
                     <div class="stars">
                         <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
                     </div>
-                    <p>"Profissional excelente. Conseguiu captar exatamente o estilo que eu queria para a minha marca e aplicou isso perfeitamente nos banners e no logo."</p>
-                    <div class="client-info">
-                        <h4>Amanda Silva</h4>
-                        <span>Empreendedora</span>
+                    <p>"Profissional excelente. Conseguiu captar exatamente o estilo que eu queria para a minha marca e aplicou isso perfeitamente nos banners e no logo final."</p>
+                    <div class="client-profile">
+                        <div class="avatar" style="background: linear-gradient(135deg, #ff7e5f, #feb47b);">A</div>
+                        <div class="client-info">
+                            <h4>Amanda Silva</h4>
+                            <span>Empreendedora Local</span>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- Seção FAQ (Perguntas Frequentes) -->
+        <!-- Seção FAQ Premium -->
         <section class="faq">
             <h2 class="section-title">Perguntas Frequentes</h2>
             <div class="faq-container">
                 
                 <details class="faq-item glass">
-                    <summary>Como funciona o pagamento? <i class='bx bx-chevron-down'></i></summary>
+                    <summary>
+                        <div class="faq-icon-left"><i class='bx bx-credit-card'></i></div>
+                        <span class="faq-title">Como funciona o pagamento?</span>
+                        <i class='bx bx-chevron-down faq-chevron'></i>
+                    </summary>
                     <div class="faq-answer">
-                        <p>Normalmente, trabalho com 50% de sinal para garantir a reserva na agenda e iniciar o projeto. Os outros 50% são pagos no momento da aprovação e entrega dos arquivos finais.</p>
+                        <p>Normalmente, trabalho com 50% de sinal via Pix para garantir a reserva na agenda e iniciar o projeto. Os outros 50% são pagos no momento da aprovação e entrega final dos arquivos.</p>
                     </div>
                 </details>
 
                 <details class="faq-item glass">
-                    <summary>Qual é o prazo de entrega? <i class='bx bx-chevron-down'></i></summary>
+                    <summary>
+                        <div class="faq-icon-left"><i class='bx bx-calendar'></i></div>
+                        <span class="faq-title">Qual é o prazo de entrega?</span>
+                        <i class='bx bx-chevron-down faq-chevron'></i>
+                    </summary>
                     <div class="faq-answer">
-                        <p>O prazo varia de acordo com a complexidade do projeto. Trabalhos de Social Media costumam levar de 2 a 4 dias, enquanto Identidades Visuais completas demandam entre 7 e 15 dias para uma entrega perfeita.</p>
+                        <p>O prazo varia conforme o projeto. Trabalhos rápidos de Social Media e Banners costumam levar de 2 a 4 dias úteis, enquanto Identidades Visuais completas demandam entre 7 e 15 dias para garantir a máxima qualidade.</p>
                     </div>
                 </details>
 
                 <details class="faq-item glass">
-                    <summary>Quais formatos de arquivo eu recebo? <i class='bx bx-chevron-down'></i></summary>
+                    <summary>
+                        <div class="faq-icon-left"><i class='bx bx-folder-open'></i></div>
+                        <span class="faq-title">Quais formatos de arquivo eu recebo?</span>
+                        <i class='bx bx-chevron-down faq-chevron'></i>
+                    </summary>
                     <div class="faq-answer">
-                        <p>Você receberá todos os arquivos em alta resolução prontos para uso (PNG com fundo transparente, JPG e PDF). Caso precise dos arquivos editáveis ou abertos, podemos incluir isso no orçamento.</p>
+                        <p>Você receberá todos os arquivos em alta resolução prontos para uso em telas ou impressão (PNG com fundo transparente, JPG e PDF). Caso precise dos arquivos abertos, comunique no momento do orçamento.</p>
                     </div>
                 </details>
 
                 <details class="faq-item glass">
-                    <summary>Posso solicitar alterações na arte? <i class='bx bx-chevron-down'></i></summary>
+                    <summary>
+                        <div class="faq-icon-left"><i class='bx bx-edit-alt'></i></div>
+                        <span class="faq-title">Posso solicitar alterações na arte?</span>
+                        <i class='bx bx-chevron-down faq-chevron'></i>
+                    </summary>
                     <div class="faq-answer">
-                        <p>Sim! Todos os orçamentos já incluem um limite de revisões (geralmente até 3 alterações) para garantir que o resultado final fique exatamente com a cara da sua marca.</p>
+                        <p>Com certeza! Todos os orçamentos já incluem um limite de revisões (geralmente até 3 alterações) para garantir que o resultado final alinhe perfeitamente com a visão e o estilo da sua marca.</p>
                     </div>
                 </details>
 
