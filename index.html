@@ -60,7 +60,7 @@
             background-size: 40px 40px;
         }
 
-        /* Glassmorphism Leve e Eficiente */
+        /* Glassmorphism Leve */
         .glass {
             background: rgba(20, 20, 25, 0.45);
             backdrop-filter: blur(10px);
@@ -323,11 +323,9 @@
             border-color: rgba(138, 43, 226, 0.4);
         }
 
-        /* Ícone de aspas no fundo do card */
         .quote-icon {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 20px; right: 20px;
             font-size: 5rem;
             color: rgba(255, 255, 255, 0.03);
             z-index: 0;
@@ -384,7 +382,7 @@
             letter-spacing: 1px;
         }
 
-        /* FAQ Estilizado Premium */
+        /* FAQ ANIMADO COM GRID CSS */
         .faq { padding: 80px 0; position: relative; z-index: 10; }
 
         .faq-container {
@@ -396,40 +394,46 @@
         }
 
         .faq-item {
-            padding: 25px 35px;
-            transition: all 0.3s ease;
+            padding: 0; /* O padding foi movido para os elementos internos para a animação funcionar */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
         }
 
         .faq-item:hover {
-            border-color: rgba(255, 123, 254, 0.3);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            border-color: rgba(255, 123, 254, 0.4);
         }
 
-        .faq-item summary {
+        .faq-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 35px;
+            background: transparent;
+        }
+
+        .faq-title-wrapper {
             display: flex;
             align-items: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-            cursor: pointer;
-            list-style: none;
             gap: 15px;
         }
-
-        .faq-item summary::-webkit-details-marker { display: none; }
 
         .faq-icon-left {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px; height: 40px;
+            width: 42px; height: 42px;
             background: rgba(255,255,255,0.05);
-            border-radius: 10px;
+            border-radius: 12px;
             color: var(--color-pink-light);
             font-size: 1.4rem;
         }
 
-        .faq-title { flex-grow: 1; }
+        .faq-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+        }
 
         .faq-chevron {
             font-size: 1.8rem;
@@ -437,21 +441,44 @@
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
         }
 
-        .faq-item[open] .faq-chevron {
-            transform: rotate(180deg);
-            color: var(--color-pink-light);
+        /* Estrutura da Animação (Grid Trick) */
+        .faq-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-inner {
+            overflow: hidden;
         }
 
         .faq-answer {
-            margin-top: 20px;
+            padding: 0 35px 25px 35px;
+        }
+
+        .faq-answer p {
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.05);
             color: #a0a0b0;
             font-size: 1.05rem;
             font-weight: 300;
             line-height: 1.8;
-            /* Animação suave ao abrir */
-            animation: fadeInDown 0.4s ease-out;
+        }
+
+        /* Classes ativas controladas pelo JS */
+        .faq-item.active {
+            border-color: rgba(138, 43, 226, 0.5);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+        }
+
+        .faq-item.active .faq-chevron {
+            transform: rotate(180deg);
+            color: var(--color-pink-light);
+        }
+
+        .faq-item.active .faq-content {
+            grid-template-rows: 1fr;
         }
 
         /* Footer */
@@ -488,7 +515,7 @@
             transform: translateY(-3px);
         }
 
-        /* Keyframes Leves */
+        /* Keyframes */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -496,10 +523,6 @@
         @keyframes fadeDown {
             from { opacity: 0; transform: translateY(-20px) translateX(-50%); }
             to { opacity: 1; transform: translateY(0) translateX(-50%); }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Responsividade */
@@ -517,8 +540,9 @@
             
             .service-card { padding: 30px 24px; }
             .testimonial-card { padding: 35px 25px; }
-            .faq-item { padding: 20px 20px; }
-            .faq-item summary { font-size: 1.05rem; gap: 10px; }
+            .faq-header { padding: 20px; }
+            .faq-answer { padding: 0 20px 20px 20px; }
+            .faq-title { font-size: 1.05rem; }
             .faq-icon-left { width: 35px; height: 35px; font-size: 1.2rem; }
             
             .services-grid, .testimonials-grid { gap: 20px; }
@@ -529,24 +553,21 @@
 </head>
 <body>
 
-    <!-- Fundo Leve -->
     <div class="background-wrapper">
         <div class="bg-grid"></div>
     </div>
 
-    <!-- Header Glassmorphism -->
     <header class="glass">
         <div class="logo">
             <i class='bx bxs-color'></i> KL <span>Visual</span>
         </div>
-        <a href="https://api.whatsapp.com/send?phone=5575936181676&text=Ol%C3%A1%2C%20quero%20solicitar%20o%20or%C3%A7amento%20para%20um%20servi%C3%A7o!%20" class="btn btn-small">
+        <a href="#contato" class="btn btn-small">
             <i class='bx bx-message-rounded-dots'></i> Entrar em contato
         </a>
     </header>
 
     <div class="container">
         
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-label">Design Gráfico</div>
             <h1>A identidade <span class="text-glow">visual</span> que sua marca precisa para se destacar.</h1>
@@ -557,51 +578,42 @@
             </a>
         </section>
 
-        <!-- Seção de Serviços -->
         <section class="services">
             <h2 class="section-title">Soluções Criativas</h2>
             <div class="services-grid">
-                
                 <div class="service-card glass">
                     <div class="icon-wrapper"><i class='bx bx-diamond'></i></div>
                     <h3>Identidade Visual</h3>
                     <p>Criação de marcas autênticas e memoráveis. Design de logotipos e paletas de cores que transmitem a essência do seu projeto.</p>
                 </div>
-
                 <div class="service-card glass">
                     <div class="icon-wrapper"><i class='bx bx-mobile-alt'></i></div>
                     <h3>Social Media</h3>
                     <p>Artes focadas em engajamento. Templates para stories e feed com o seu estilo, pensados para reter a atenção e gerar conversões.</p>
                 </div>
-
                 <div class="service-card glass">
                     <div class="icon-wrapper"><i class='bx bx-play-circle'></i></div>
                     <h3>Audiovisual & Motion</h3>
                     <p>Edição de vídeos dinâmicos, reels e materiais gráficos complementares para anúncios e campanhas nas redes sociais.</p>
                 </div>
-
                 <div class="service-card glass">
                     <div class="icon-wrapper"><i class='bx bx-purchase-tag-alt'></i></div>
                     <h3>Banners & Promoções</h3>
                     <p>Peças gráficas persuasivas para campanhas de vendas, lançamentos, fachadas digitais e materiais publicitários de alta performance.</p>
                 </div>
-
                 <div class="service-card glass">
                     <div class="icon-wrapper"><i class='bx bx-restaurant'></i></div>
                     <h3>Menus & Cardápios</h3>
                     <p>Design atrativo e estratégico para negócios locais e gastronomia. Cardápios digitais interativos e artes para impressão.</p>
                 </div>
-
                 <div class="service-card glass">
                     <div class="icon-wrapper"><i class='bx bx-calendar-event'></i></div>
                     <h3>Flyers & Eventos</h3>
                     <p>Materiais de impacto para festas, shows, torneios online e eventos. Arte visual que cria antecipação e atrai público.</p>
                 </div>
-
             </div>
         </section>
 
-        <!-- Seção Portfólio (Em Breve) -->
         <section class="portfolio-soon" id="portfolio">
             <div class="soon-box glass">
                 <i class='bx bx-time-five main-icon'></i>
@@ -610,11 +622,9 @@
             </div>
         </section>
 
-        <!-- Seção de Depoimentos Refinada -->
         <section class="testimonials">
             <h2 class="section-title">O que dizem sobre mim</h2>
             <div class="testimonials-grid">
-                
                 <div class="testimonial-card glass">
                     <i class='bx bxs-quote-alt-left quote-icon'></i>
                     <div class="stars">
@@ -629,7 +639,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="testimonial-card glass">
                     <i class='bx bxs-quote-alt-left quote-icon'></i>
                     <div class="stars">
@@ -644,7 +653,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="testimonial-card glass">
                     <i class='bx bxs-quote-alt-left quote-icon'></i>
                     <div class="stars">
@@ -659,63 +667,119 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Seção FAQ Premium -->
+        <!-- Seção FAQ com Animação Smooth -->
         <section class="faq">
             <h2 class="section-title">Perguntas Frequentes</h2>
             <div class="faq-container">
                 
-                <details class="faq-item glass">
-                    <summary>
-                        <div class="faq-icon-left"><i class='bx bx-credit-card'></i></div>
-                        <span class="faq-title">Como funciona o pagamento?</span>
+                <div class="faq-item glass" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <div class="faq-title-wrapper">
+                            <div class="faq-icon-left"><i class='bx bx-credit-card'></i></div>
+                            <span class="faq-title">Como funciona o pagamento?</span>
+                        </div>
                         <i class='bx bx-chevron-down faq-chevron'></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Normalmente, trabalho com 50% de sinal via Pix para garantir a reserva na agenda e iniciar o projeto. Os outros 50% são pagos no momento da aprovação e entrega final dos arquivos.</p>
                     </div>
-                </details>
+                    <div class="faq-content">
+                        <div class="faq-inner">
+                            <div class="faq-answer">
+                                <p>Para iniciarmos o projeto, solicito um sinal de 50% (via Pix). Esse valor garante a reserva do seu projeto na minha agenda e me permite iniciar a pesquisa visual. Os 50% restantes são acertados apenas no momento da entrega e aprovação dos arquivos finais.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <details class="faq-item glass">
-                    <summary>
-                        <div class="faq-icon-left"><i class='bx bx-calendar'></i></div>
-                        <span class="faq-title">Qual é o prazo de entrega?</span>
+                <div class="faq-item glass" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <div class="faq-title-wrapper">
+                            <div class="faq-icon-left"><i class='bx bx-calendar'></i></div>
+                            <span class="faq-title">Qual é o prazo de entrega das artes?</span>
+                        </div>
                         <i class='bx bx-chevron-down faq-chevron'></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>O prazo varia conforme o projeto. Trabalhos rápidos de Social Media e Banners costumam levar de 2 a 4 dias úteis, enquanto Identidades Visuais completas demandam entre 7 e 15 dias para garantir a máxima qualidade.</p>
                     </div>
-                </details>
+                    <div class="faq-content">
+                        <div class="faq-inner">
+                            <div class="faq-answer">
+                                <p>O tempo varia conforme a complexidade. Peças avulsas (como posts para Instagram, flyers e banners) geralmente levam de <strong>2 a 4 dias úteis</strong>. Projetos robustos como uma Identidade Visual completa podem levar de <strong>10 a 15 dias úteis</strong> para atingir a qualidade máxima.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <details class="faq-item glass">
-                    <summary>
-                        <div class="faq-icon-left"><i class='bx bx-folder-open'></i></div>
-                        <span class="faq-title">Quais formatos de arquivo eu recebo?</span>
+                <div class="faq-item glass" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <div class="faq-title-wrapper">
+                            <div class="faq-icon-left"><i class='bx bx-edit-alt'></i></div>
+                            <span class="faq-title">E se eu quiser alterar algo no projeto?</span>
+                        </div>
                         <i class='bx bx-chevron-down faq-chevron'></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Você receberá todos os arquivos em alta resolução prontos para uso em telas ou impressão (PNG com fundo transparente, JPG e PDF). Caso precise dos arquivos abertos, comunique no momento do orçamento.</p>
                     </div>
-                </details>
+                    <div class="faq-content">
+                        <div class="faq-inner">
+                            <div class="faq-answer">
+                                <p>Meu foco é acertar de primeira, mas ajustes fazem parte do processo! O valor orçado já inclui até <strong>3 rodadas de alterações gratuitas</strong> (mudanças de cor, fonte, ajustes de layout). Caso o projeto mude totalmente de direção ou ultrapasse esse limite, alinharemos uma pequena taxa adicional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <details class="faq-item glass">
-                    <summary>
-                        <div class="faq-icon-left"><i class='bx bx-edit-alt'></i></div>
-                        <span class="faq-title">Posso solicitar alterações na arte?</span>
+                <div class="faq-item glass" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <div class="faq-title-wrapper">
+                            <div class="faq-icon-left"><i class='bx bx-folder-open'></i></div>
+                            <span class="faq-title">Quais formatos de arquivo eu recebo?</span>
+                        </div>
                         <i class='bx bx-chevron-down faq-chevron'></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Com certeza! Todos os orçamentos já incluem um limite de revisões (geralmente até 3 alterações) para garantir que o resultado final alinhe perfeitamente com a visão e o estilo da sua marca.</p>
                     </div>
-                </details>
+                    <div class="faq-content">
+                        <div class="faq-inner">
+                            <div class="faq-answer">
+                                <p>Você receberá um pacote completo em alta resolução: formato <strong>PNG</strong> (com e sem fundo, pronto para uso digital), <strong>JPG</strong>, e <strong>PDF vetorizado</strong> (ideal para enviar para a gráfica sem perder qualidade). Arquivos abertos (editáveis) podem ser solicitados e possuem uma taxa de liberação.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <div class="faq-title-wrapper">
+                            <div class="faq-icon-left"><i class='bx bx-message-square-dots'></i></div>
+                            <span class="faq-title">O que eu preciso enviar para começarmos?</span>
+                        </div>
+                        <i class='bx bx-chevron-down faq-chevron'></i>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-inner">
+                            <div class="faq-answer">
+                                <p>Após fecharmos o projeto, enviarei um "Briefing" (um formulário super rápido). Você precisará me informar as referências de estilo que você gosta, os textos exatos que estarão na arte e, caso já possua, o logotipo da sua marca em boa qualidade.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item glass" onclick="toggleFaq(this)">
+                    <div class="faq-header">
+                        <div class="faq-title-wrapper">
+                            <div class="faq-icon-left"><i class='bx bx-printer'></i></div>
+                            <span class="faq-title">Você também trabalha com impressão?</span>
+                        </div>
+                        <i class='bx bx-chevron-down faq-chevron'></i>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-inner">
+                            <div class="faq-answer">
+                                <p>Meu foco é 100% na criação da <strong>Estratégia e Design Digital</strong>. Eu não realizo a impressão física dos materiais, porém, te entregarei os arquivos perfeitamente configurados (com margens de sangria e paleta CMYK) para que você apenas encaminhe para a gráfica de sua confiança sem nenhuma dor de cabeça.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
 
-        <!-- Rodapé -->
         <footer>
             <div class="footer-social">
                 <a href="https://www.instagram.com/kl.visuall/" target="_blank"><i class='bx bxl-instagram'></i></a>
@@ -725,6 +789,24 @@
         </footer>
 
     </div>
+
+    <!-- Script leve para animação do FAQ -->
+    <script>
+        function toggleFaq(element) {
+            // Verifica se a pergunta clicada já está aberta
+            const isActive = element.classList.contains('active');
+            
+            // Fecha todas as perguntas primeiro (estilo acordeão)
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Se a pergunta que cliquei não estava aberta, abre ela agora
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+    </script>
 
 </body>
 </html>
