@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KL Visual | Estúdio de Design</title>
     
+    <!-- Ícone da Aba do Navegador (Favicon) -->
+    <link rel="icon" href="https://i.ibb.co/sp50YMk2/icon-clean.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/sp50YMk2/icon-clean.png">
+
     <!-- Fonte Premium (Plus Jakarta Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,13 +32,12 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            /* Remove o destaque azul/cinza em botões ao clicar no celular */
+            -webkit-tap-highlight-color: transparent;
         }
 
         html { scroll-behavior: smooth; }
 
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
         body {
             background-color: var(--color-bg);
             color: #ffffff;
@@ -397,7 +400,7 @@
         }
 
         .faq-item {
-            padding: 0; /* O padding foi movido para os elementos internos para a animação funcionar */
+            padding: 0; 
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             overflow: hidden;
