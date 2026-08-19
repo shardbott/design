@@ -3,24 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kauã | Design Gráfico</title>
+    <title>KL Visual | Design Gráfico</title>
     <style>
+        /* Variáveis de Cores e Temas */
+        :root {
+            --color-bg: #030305;
+            --color-purple: #8a2be2;
+            --color-pink: #ff1493;
+            --color-pink-light: #ff7bfe;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.2);
+        }
+
         /* Reset e Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #050505;
+            background-color: var(--color-bg);
             color: #ffffff;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Efeitos de Luz no Fundo (Rosa e Roxo) */
+        /* Efeitos de Luz no Fundo (Background Animado) */
         .background-glow {
             position: fixed;
             top: 0;
@@ -29,47 +44,46 @@
             height: 100vh;
             z-index: -1;
             overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, rgba(15, 10, 25, 1) 0%, var(--color-bg) 100%);
         }
 
         .glow-purple {
             position: absolute;
-            top: 15%;
-            left: 5%;
-            width: 50vw;
-            height: 50vw;
-            max-width: 500px;
-            max-height: 500px;
-            background: radial-gradient(circle, rgba(138,43,226,0.25) 0%, rgba(0,0,0,0) 70%);
-            filter: blur(50px);
-            animation: float 10s infinite ease-in-out alternate;
+            top: -10%;
+            left: -10%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(138,43,226,0.15) 0%, rgba(0,0,0,0) 60%);
+            filter: blur(80px);
+            animation: float-slow 15s infinite ease-in-out alternate;
         }
 
         .glow-pink {
             position: absolute;
-            bottom: 10%;
-            right: 5%;
-            width: 60vw;
-            height: 60vw;
-            max-width: 600px;
-            max-height: 600px;
-            background: radial-gradient(circle, rgba(255,20,147,0.2) 0%, rgba(0,0,0,0) 70%);
-            filter: blur(60px);
-            animation: float 12s infinite ease-in-out alternate-reverse;
+            bottom: -20%;
+            right: -10%;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(255,20,147,0.12) 0%, rgba(0,0,0,0) 60%);
+            filter: blur(90px);
+            animation: float-slow 18s infinite ease-in-out alternate-reverse;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); }
-            100% { transform: translateY(-40px) translateX(40px); }
+        @keyframes float-slow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, -50px) scale(1.1); }
         }
 
-        /* Classes utilitárias de Glassmorphism (Estilo iOS) */
+        /* Classes utilitárias de Glassmorphism Premium */
         .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-top: 1px solid var(--glass-highlight); /* Reflexo de luz no topo */
+            border-left: 1px solid var(--glass-highlight); /* Reflexo de luz na lateral */
             border-radius: 24px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
 
         /* Layout Principal */
@@ -79,127 +93,240 @@
             padding: 0 24px;
         }
 
-        /* Header / Logo */
+        /* Header Fixo e Glossy */
         header {
-            padding: 30px 0;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1100px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 100;
+            border-radius: 100px;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            background: linear-gradient(to right, #ff7bfe, #8a2be2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--color-pink-light), var(--color-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Botão CTA Principal */
-        .btn-primary {
+        /* Botões */
+        .btn {
             display: inline-block;
-            padding: 16px 36px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
             text-decoration: none;
-            background: linear-gradient(135deg, rgba(255,20,147,0.5) 0%, rgba(138,43,226,0.5) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-weight: 600;
             border-radius: 50px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .btn-small {
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-small:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary {
+            padding: 18px 42px;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, rgba(255,20,147,0.7) 0%, rgba(138,43,226,0.7) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shine 6s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(138,43,226,0.4);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(138, 43, 226, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 100px 0 80px;
+            padding: 180px 0 100px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            animation: fadeUp 1s ease-out forwards;
+        }
+
+        .hero-badge {
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            color: var(--color-pink-light);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .hero h1 {
-            font-size: 3.8rem;
+            font-size: 4.5rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 24px;
-            max-width: 850px;
-            letter-spacing: -1px;
+            max-width: 900px;
+            letter-spacing: -1.5px;
+        }
+
+        /* Destaque com efeito especial no título */
+        .text-glow {
+            background: linear-gradient(135deg, var(--color-pink-light) 0%, var(--color-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 40px rgba(138, 43, 226, 0.5);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #a0a0a0;
+            font-size: 1.25rem;
+            color: #b0b0b0;
             margin-bottom: 40px;
-            max-width: 550px;
+            max-width: 600px;
         }
 
         /* Serviços */
         .services {
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
         }
         
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 50px;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
             font-weight: 700;
+            letter-spacing: -1px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .service-card {
-            padding: 40px 30px;
-            transition: transform 0.3s ease;
+            padding: 50px 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gradiente interno sutil no hover */
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .icon-wrapper {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(255,20,147,0.2), rgba(138,43,226,0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .service-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
             color: #fff;
         }
 
         .service-card p {
             color: #a0a0a0;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
-        /* Portfólio (Espaço Reservado) */
+        /* Portfólio */
         .portfolio-soon {
             padding: 80px 0 120px;
         }
 
         .soon-box {
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .soon-box::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--color-purple), var(--color-pink), transparent, transparent);
+            z-index: -1;
+            border-radius: 26px;
+            opacity: 0.3;
+            filter: blur(10px);
         }
 
         .soon-box h2 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, #ff7bfe, #8a2be2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
         /* Footer */
@@ -207,16 +334,23 @@
             text-align: center;
             padding: 40px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: #666;
+            color: #555;
             font-size: 0.9rem;
         }
 
-        /* Responsividade para Celulares */
+        /* Animações */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividade */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.1rem; }
-            .hero { padding: 60px 0; }
-            .soon-box h2 { font-size: 2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; padding: 0 15px; }
+            .hero { padding: 150px 0 60px; }
+            .soon-box h2 { font-size: 2.2rem; }
+            header { padding: 12px 20px; width: calc(100% - 30px); }
         }
     </style>
 </head>
@@ -228,51 +362,60 @@
         <div class="glow-pink"></div>
     </div>
 
-    <div class="container">
-        <header>
-            <div class="logo">Kauã.Design</div>
-            <!-- Botão menor no header -->
-            <a href="#contato" class="btn-primary" style="padding: 10px 24px; font-size: 0.95rem;">Contato</a>
-        </header>
+    <!-- Header Glassmorphism -->
+    <header class="glass">
+        <div class="logo">KL <span>Visual</span></div>
+        <a href="#contato" class="btn btn-small">Contato</a>
+    </header>
 
+    <div class="container">
+        <!-- Hero Section -->
         <section class="hero">
-            <h1>O design que sua marca precisa para se destacar.</h1>
-            <p>Identidade visual moderna e estratégica. Transforme seus seguidores em clientes através de uma estética premium e profissional.</p>
+            <div class="hero-badge">Design Estratégico</div>
+            <h1>A identidade <span class="text-glow">visual</span> que sua marca precisa para se destacar.</h1>
+            <p>Design moderno, autêntico e focado em resultados. Transforme seus seguidores em clientes através de uma estética premium e profissional.</p>
             
-            <!-- ATENÇÃO: Substitua o número "5500000000000" pelo seu WhatsApp (Código do país + DDD + Número) -->
-            <a href="https://api.whatsapp.com/send?phone=5575936181676&text=Ol%C3%A1%2C%20quero%20solicitar%20o%20or%C3%A7amento%20para%20um%20servi%C3%A7o!%20" class="btn-primary" id="contato">
-                Chamar no WhatsApp
+            <a href="https://api.whatsapp.com/send?phone=5575936181676&text=Ol%C3%A1%2C%20quero%20solicitar%20o%20or%C3%A7amento%20para%20um%20servi%C3%A7o!%20" class="btn btn-primary glass" id="contato" target="_blank" rel="noopener noreferrer">
+                Solicitar Orçamento
             </a>
         </section>
 
+        <!-- Seção de Serviços -->
         <section class="services">
-            <h2 class="section-title">O que eu faço</h2>
+            <h2 class="section-title">Soluções Criativas</h2>
             <div class="services-grid">
-                <!-- Cartões de Vidro (Glassmorphism) -->
+                
                 <div class="service-card glass">
-                    <h3>Identidade Visual & Logos</h3>
-                    <p>Criação de marcas autênticas e memoráveis. Design de logotipos e paletas de cores que transmitem a essência do seu projeto, seja para estúdios criativos ou torneios.</p>
+                    <div class="icon-wrapper">✨</div>
+                    <h3>Identidade Visual</h3>
+                    <p>Criação de marcas autênticas e memoráveis. Design de logotipos e paletas de cores que transmitem a essência do seu projeto e conectam com o seu público.</p>
                 </div>
+
                 <div class="service-card glass">
-                    <h3>Design para Social Media</h3>
-                    <p>Artes focadas em engajamento para o Instagram. Templates para stories e feed no estilo glossy, pensados para reter a atenção e gerar conversão.</p>
+                    <div class="icon-wrapper">📱</div>
+                    <h3>Social Media Design</h3>
+                    <p>Artes focadas em engajamento. Templates para stories e feed no estilo glossy, pensados para reter a atenção, destacar seu perfil e gerar conversões reais.</p>
                 </div>
+
                 <div class="service-card glass">
-                    <h3>Edição e Audiovisual</h3>
-                    <p>Edição de vídeos dinâmicos e desenvolvimento de materiais gráficos complementares para anúncios, reels e campanhas nas redes sociais.</p>
+                    <div class="icon-wrapper">🎬</div>
+                    <h3>Audiovisual & Motion</h3>
+                    <p>Edição de vídeos dinâmicos e desenvolvimento de materiais gráficos complementares para anúncios, reels, campeonatos e campanhas nas redes sociais.</p>
                 </div>
+
             </div>
         </section>
 
+        <!-- Seção Portfólio (Em Breve) -->
         <section class="portfolio-soon">
             <div class="soon-box glass">
                 <h2>Portfólio em Breve</h2>
-                <p style="color: #a0a0a0; max-width: 550px; margin: 0 auto;">Estou selecionando e preparando meus melhores trabalhos em design gráfico para exibir aqui. Até lá, entre em contato direto comigo pelo WhatsApp para solicitar referências exclusivas!</p>
+                <p style="color: #a0a0a0; max-width: 550px; margin: 0 auto;">Estou selecionando meus melhores trabalhos para exibir aqui em alta qualidade. Até lá, chame no WhatsApp e solicitite exemplos exclusivos da minha linha criativa.</p>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2026 KL Visual | Design Gráfico. Todos os direitos reservados.</p>
+            <p>&copy; 2026 KL Visual. Todos os direitos reservados.</p>
         </footer>
     </div>
 
