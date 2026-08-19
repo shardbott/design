@@ -47,7 +47,6 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            /* Gradiente de luzes fixo (Super leve para o processador) */
             background: 
                 radial-gradient(circle at 15% 30%, rgba(138,43,226,0.12), transparent 40%),
                 radial-gradient(circle at 85% 70%, rgba(255,20,147,0.1), transparent 40%),
@@ -273,6 +272,108 @@
             font-weight: 300;
         }
 
+        /* Depoimentos */
+        .testimonials {
+            padding: 60px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stars i {
+            color: #f5b041;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-card p {
+            color: #e0e0e0;
+            font-size: 1.05rem;
+            font-style: italic;
+            font-weight: 300;
+            flex-grow: 1;
+        }
+
+        .client-info h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .client-info span {
+            color: var(--color-pink-light);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* FAQ (Perguntas Frequentes) */
+        .faq {
+            padding: 60px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            padding: 22px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            list-style: none; /* Remove seta padrão */
+        }
+
+        /* Esconde a seta nativa no Safari/Chrome */
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary i {
+            font-size: 1.5rem;
+            color: var(--color-pink-light);
+            transition: transform 0.3s ease;
+        }
+
+        /* Gira a seta quando o FAQ estiver aberto */
+        .faq-item[open] summary i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding-top: 15px;
+            margin-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #9090a0;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
         /* Portfólio */
         .portfolio-soon {
             padding: 60px 0 100px;
@@ -361,9 +462,10 @@
             .hero h1 { font-size: 2.5rem; letter-spacing: -1px; }
             .hero p { font-size: 1.05rem; }
             .btn-primary { padding: 16px 20px; width: 100%; font-size: 1rem; }
-            .service-card { padding: 30px 24px; }
-            .services-grid { gap: 16px; }
+            .service-card, .testimonial-card, .faq-item { padding: 25px 20px; }
+            .services-grid, .testimonials-grid { gap: 16px; }
             .soon-box h2 { font-size: 2rem; }
+            .section-title { font-size: 2rem; margin-bottom: 35px;}
         }
     </style>
 </head>
@@ -447,6 +549,83 @@
                 <i class='bx bx-time-five main-icon'></i>
                 <h2>Portfólio em Breve</h2>
                 <p>Estou selecionando meus melhores trabalhos para exibir aqui em alta qualidade. Até lá, chame no WhatsApp e solicitite exemplos exclusivos da minha linha criativa.</p>
+            </div>
+        </section>
+
+        <!-- Seção de Depoimentos -->
+        <section class="testimonials">
+            <h2 class="section-title">O que dizem sobre mim</h2>
+            <div class="testimonials-grid">
+                
+                <div class="testimonial-card glass">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                    </div>
+                    <p>"O trabalho ficou excepcional! A identidade visual do nosso torneio elevou muito o nível da competição. Super recomendo pela atenção aos detalhes e estética."</p>
+                    <div class="client-info">
+                        <h4>João Gabriel</h4>
+                        <span>Organizador de Eventos</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card glass">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                    </div>
+                    <p>"A edição dos vídeos e as artes para as redes sociais do estúdio mudaram completamente o nosso engajamento. Entrega rápida e um visual super premium."</p>
+                    <div class="client-info">
+                        <h4>Marcos Vinícius</h4>
+                        <span>Produtor Musical</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card glass">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                    </div>
+                    <p>"Profissional excelente. Conseguiu captar exatamente o estilo que eu queria para a minha marca e aplicou isso perfeitamente nos banners e no logo."</p>
+                    <div class="client-info">
+                        <h4>Amanda Silva</h4>
+                        <span>Empreendedora</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção FAQ (Perguntas Frequentes) -->
+        <section class="faq">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-container">
+                
+                <details class="faq-item glass">
+                    <summary>Como funciona o pagamento? <i class='bx bx-chevron-down'></i></summary>
+                    <div class="faq-answer">
+                        <p>Normalmente, trabalho com 50% de sinal para garantir a reserva na agenda e iniciar o projeto. Os outros 50% são pagos no momento da aprovação e entrega dos arquivos finais.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item glass">
+                    <summary>Qual é o prazo de entrega? <i class='bx bx-chevron-down'></i></summary>
+                    <div class="faq-answer">
+                        <p>O prazo varia de acordo com a complexidade do projeto. Trabalhos de Social Media costumam levar de 2 a 4 dias, enquanto Identidades Visuais completas demandam entre 7 e 15 dias para uma entrega perfeita.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item glass">
+                    <summary>Quais formatos de arquivo eu recebo? <i class='bx bx-chevron-down'></i></summary>
+                    <div class="faq-answer">
+                        <p>Você receberá todos os arquivos em alta resolução prontos para uso (PNG com fundo transparente, JPG e PDF). Caso precise dos arquivos editáveis ou abertos, podemos incluir isso no orçamento.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item glass">
+                    <summary>Posso solicitar alterações na arte? <i class='bx bx-chevron-down'></i></summary>
+                    <div class="faq-answer">
+                        <p>Sim! Todos os orçamentos já incluem um limite de revisões (geralmente até 3 alterações) para garantir que o resultado final fique exatamente com a cara da sua marca.</p>
+                    </div>
+                </details>
+
             </div>
         </section>
 
